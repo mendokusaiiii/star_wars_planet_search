@@ -2,10 +2,18 @@ import React, { useContext } from 'react';
 import starWarsContext from '../context/starWarsContext';
 
 function Table() {
-  const { data, filters } = useContext(starWarsContext);
+  const {
+    data,
+    filters,
+    allFilters: { filteredNames },
+  } = useContext(starWarsContext);
+
+  const filteredData = data
+    .filter((planet) => planet.name.toLowerCase().includes(filteredNames));
+
   return (
     <div>
-      <h1>STAR WARSR PLANETS!</h1>
+      <h1>STAR WARS PLANETS!</h1>
       <table>
         <thead>
           <tr>
@@ -17,7 +25,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          { data.map((planet) => (
+          { filteredData.map((planet) => (
             <tr key={ planet.name }>
               { Object.values(planet).map((id) => (
                 <td key={ id }>

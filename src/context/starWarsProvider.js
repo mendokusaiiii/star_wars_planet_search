@@ -7,6 +7,7 @@ const URL = 'https://swapi.dev/api/planets';
 function StarWarsProvider({ children }) {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([]);
+  const [filteredNames, setFilteredNames] = useState('');
   useEffect(() => {
     const fetchAPI = async () => {
       try {
@@ -26,6 +27,10 @@ function StarWarsProvider({ children }) {
   const value = useMemo(() => ({
     data,
     filters,
+    allFilters: {
+      filteredNames,
+    },
+    setFilteredNames,
   }));
 
   return (
