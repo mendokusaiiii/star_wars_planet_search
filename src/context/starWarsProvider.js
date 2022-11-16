@@ -102,7 +102,7 @@ function StarWarsProvider({ children }) {
 
   const handleRemoveAllFilters = () => {
     setFilters([]);
-    setColumnOption(INICIAL_COLUMN_OPTIONS);
+    setColumnOption(OPTIONS);
 
     const allData = data
       .filter(({ name }) => name.toLowerCase().includes(nameFiltered.name.toLowerCase()))
