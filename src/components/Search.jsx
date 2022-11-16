@@ -2,6 +2,7 @@ import React from 'react';
 import Filter from './Filter';
 import NumericFilter from './NumericFIlter';
 import RemoveFilters from './RemoveFIlters';
+import Sort from './Sort';
 
 function Search() {
   return (
@@ -11,6 +12,7 @@ function Search() {
         <NumericFilter />
       </div>
       <RemoveFilters />
+      <Sort />
     </div>
   );
 }

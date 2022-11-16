@@ -127,8 +127,8 @@ function StarWarsProvider({ children }) {
     switch (sort) {
     case 'ASC':
       return [
-        ...classArray,
         ...sortedNumber.sort((a, b) => a[column] - b[column]),
+        ...classArray,
       ];
     default:
       return [
