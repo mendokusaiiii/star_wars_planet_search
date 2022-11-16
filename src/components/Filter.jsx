@@ -1,18 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import starWarsContext from '../context/starWarsContext';
 
 function Filter() {
-  const { allFilters: { filteredNames }, setFilteredNames } = useContext(starWarsContext);
+  const { setNameFiltered } = useContext(starWarsContext);
+  const [names, setNameFilter] = useState('');
+
+  useEffect(() => {
+    setNameFiltered({ name: names });
+  }, [setNameFiltered, names]);
   return (
-    <label htmlFor="filters">
-      <input
-        type="text"
-        id="filters"
-        data-testid="name-filter"
-        value={ filteredNames }
-        onChange={ (event) => setFilteredNames(event.target.value) }
-      />
-    </label>
+    <form>
+      <label htmlFor="name-filter">
+        <input
+          type="text"
+          data-testid="name-filter"
+          value={ names }
+          placeholder="Planet Name"
+          onChange={ ({ target: { value } }) => setNameFilter(value) }
+        />
+      </label>
+    </form>
   );
 }
 
